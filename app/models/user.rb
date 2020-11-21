@@ -15,7 +15,6 @@ class User < ApplicationRecord
   def patients
     attributes = %w{id last_name first_name email}
     patients = self.company.patients
-    binding.pry
     CSV.generate(headers: true) do |csv|
       csv << attributes
       patients.each do |user|
