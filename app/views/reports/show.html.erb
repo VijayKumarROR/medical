@@ -1,0 +1,33 @@
+<h1>Patient Reports</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Age</th>
+      <th>Parent Name</th>
+      <th>Describe Problem</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+	  <% reports = @patient.reports %>
+	  <% reports.each do |report| %>
+	    <tr>
+	      <td><%= report.age %></td>
+	      <td><%= report.parents_name %></td>
+	      <td><%= report.describe_problem %></td>
+	      <td><%= report.amount %></td>
+	      <td><%= link_to "Edit Report", edit_report_path(report.id) %></td>
+	      <td><%= link_to 'Delete', "/reports/#{report.id}", method: :delete ,data: {confirm: "Are you sure?"} %></td>
+	    </tr>
+	  <% end %>
+  </tbody>
+</table>
+
+
+<div class="log">
+	<%= link_to 'Back', patients_path %>
+	<%= link_to 'Logout', destroy_user_session_path, method: 'delete', class: 'btn btn-danger' %>
+</div>

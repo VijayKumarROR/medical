@@ -1,0 +1,26 @@
+<h1>Edit Reports</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Age</th>
+      <th scope="col">Parents Name</th>
+      <th scope="col">Describe Problem</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= form_for(@report, method: :put) do |f| %>
+    <tr>
+      <td><%= f.text_field :age, value: @report.age %></td>
+      <td><%= f.text_field :parents_name, value: @report.parents_name %></td>
+      <td><%= f.text_field :describe_name, value: @report.describe_problem %></td>
+      <td><%= f.text_field :amount, value: @report.amount %></td>
+			<td><%= f.submit 'Update', class: 'bt btn-primary' %></td>
+      <td><%= link_to 'Delete', "/patients/#{@report.id}", method: :delete ,data: {confirm: "Are you sure?"} %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>

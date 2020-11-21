@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="info">
+		<p>Patient Email: <%= @patient.email %></p>
+	</div>
+
+	<div class="adNew">
+		<a class="add_now btn btn-primary" data-count="0">Add more Report</a>
+	</div><br>
+
+	<%= form_tag(report_generator_patients_path, multipart: true) do %>
+	<%= hidden_field_tag "id", @patient.id %>
+		<div id="appendDiv">
+			<div class="addMore">
+				<div class="row">
+					
+					<div class="col-sm-4">
+						<input type="text" class="form-control age" name="reports[0]age" placeholder="Age" max="3" required="true">
+					</div>
+
+					<div class="col-sm-4">
+						<input type="text" class="form-control parent_name" name="reports[0]parents_name" placeholder="Parents Name" required="true">
+					</div>
+
+					<div class="col-sm-4">
+						<input type="text" class="form-control problem" name="reports[0]describe_problem" placeholder="Describe Problem" required="true">
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-6">
+						<input type="text" class="form-control amount" name="reports[0]amount" placeholder="Amount" required="true">
+					</div>
+					<div class="col-sm-6">
+						<input type="file" class="form-control attachment" name="attachments[0]attachment" required="true">
+					</div>
+				</div>
+
+			</div><br>
+		</div>
+
+		<div class="actions">
+			<%= submit_tag "Generate", class: 'btn btn-primary' %>
+		</div>
+	<% end %>
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.add_now').click(function(){
+			var report_attr_count = $(this).attr('data-count');
+			var report = parseInt(report_attr_count) + 1;
+			var html = $('.addMore').html();
+			$('#appendDiv').append(html);
+			var ele1 = $('.age').last();
+			var ele2 = $('.parent_name').last();
+			var ele3 = $('.problem').last();
+			var ele4 = $('.amount').last();
+			var ele5 = $('.attachment').last();
+			$(ele1).attr('name', ('reports['+report+']age')).attr('required',true);
+			$(ele2).attr('name', ('reports['+report+']parents_name')).attr('required',true);
+			$(ele3).attr('name', ('reports['+report+']describe_problem')).attr('required',true);
+			$(ele4).attr('name', ('reports['+report+']amount')),attr('required',true);
+			$(ele5).attr('name', ('attachments['+report+']attachment')).attr('required',true);
+			$('.add_now').attr('data-count', report);
+		})
+	})
+</script>
