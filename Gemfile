@@ -28,6 +28,10 @@ gem 'jquery-rails'
 
 gem 'csv'
 
+gem 'omniauth-google-oauth2', '~> 0.6.1'
+gem 'omniauth-oauth2'
+
+gem 'geocoder'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

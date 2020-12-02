@@ -1,2 +1,7 @@
 <%= link_to 'Sign in', new_user_session_path %>
 <%= link_to 'Sign Up', new_user_registration_path %>
+(OR)
+<a href="<%= user_omniauth_authorize_path(:google_oauth2) %>" class="flex flex-justify-between" style="">
+  <img src="/assets/google.png" alt="">&nbsp;
+  <div class="signup-social">Signup with Google</div>
+</a>
