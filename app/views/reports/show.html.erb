@@ -1,6 +1,6 @@
 <h1>Patient Reports</h1>
 
-<table class="table">
+<table class="display" id="report_table">
   <thead>
     <tr>
       <th>Age</th>
@@ -19,8 +19,7 @@
 	      <td><%= report.parents_name %></td>
 	      <td><%= report.describe_problem %></td>
 	      <td><%= report.amount %></td>
-	      <td><%= link_to "Edit Report", edit_report_path(report.id) %></td>
-	      <td><%= link_to 'Delete', "/reports/#{report.id}", method: :delete ,data: {confirm: "Are you sure?"} %></td>
+	      <td><%= link_to "Edit Report", edit_report_path(report.id) %> | <%= link_to 'Delete', "/reports/#{report.id}", method: :delete ,data: {confirm: "Are you sure?"} %></td>
 	    </tr>
 	  <% end %>
   </tbody>
